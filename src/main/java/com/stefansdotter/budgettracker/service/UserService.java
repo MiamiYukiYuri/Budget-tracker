@@ -18,8 +18,7 @@ public class UserService {
         System.out.print("Please enter your password ");
         String password = scanner.nextLine();
 
-        return new User(firstName, lastName, password);          // varför funkar det ej?
-
+        return new User(firstName, lastName, password);
     }
 
     public User registerUser() {

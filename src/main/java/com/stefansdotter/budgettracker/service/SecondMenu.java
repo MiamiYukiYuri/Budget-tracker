@@ -12,14 +12,9 @@ public class SecondMenu {
 
         boolean isRunning = true;
         IncomeStorage incomeStorage = new IncomeStorage();
+        ExpenseStorage expenseStorage = new ExpenseStorage();
         ArrayList<Transaction> allTransactions = new ArrayList<>(); // för att kunna visa alla transaktioner
         ArrayList<IncomeStorage> allIncomes = new ArrayList<>(); // för att visa alla inkomster
-        int incomeIndex = 1;
-        for (EIncomeCategory incomeCategory : EIncomeCategory.values()) {
-            System.out.println(incomeIndex + " " + incomeCategory);
-            incomeIndex++;
-        }
-
 
         while (isRunning) {
             Scanner input = new Scanner(System.in);
@@ -28,7 +23,7 @@ public class SecondMenu {
                 case "1":
                     System.out.println("Choose an alternative ");
                     System.out.println("[1] Show all of my incomes");
-                    System.out.println("[2] Add, delete or change an income category");
+                    System.out.println("[2] Add, delete or change an income");
                     userInput = input.nextLine();
                     switch (userInput) {
                         case "1":
@@ -43,20 +38,20 @@ public class SecondMenu {
                             userInput = input.nextLine();
                             switch (userInput) {
                                 case "1":
-                                    System.out.println("Here you can add an income item");
+                                    System.out.println("What category do you want to add an income to?");
                                     userInput = input.nextLine();
-                                    incomeStorage.addIncome(new Income(Double.parseDouble(userInput), EIncomeCategory.SALARY)); // Double.parseDouble gör om userInput till double
+                                    incomeStorage.addIncome(new Income("tjoho", Double.parseDouble(userInput), EIncomeCategory.SALARY)); // Double.parseDouble gör om userInput till double
                                     // två värden, amount och category
                                     //  initierat IncomeStorage och gett variabelnamn incomeStorage. addIncome(userInput) innebär att användarens input är det som läggs till i array listen
                                     break;
                                 case "2":
-                                    System.out.println("Here you can edit an income item");
+                                    System.out.println("In what category is the income that you want to edit?");
                                     // metod för att ändra en inkomst
                                     break;
                                 case "3":
-                                    System.out.println("Here you can delete an income item");
+                                    System.out.println("What category do you want to delete an income from?");
                                     userInput = input.nextLine();
-                                    incomeStorage.removeIncome(userInput);    // vorfor fonka ej?
+                                    //incomeStorage.removeIncome(userInput);    // vorfor fonka ej?
                                     break;
                                 default:
                                     System.out.println("Invalid input, please try again");
@@ -73,7 +68,7 @@ public class SecondMenu {
                     switch (userInput) {
                         case "1":
                             System.out.println("This shows all of your expenses");
-                            // enum IncomeCategory
+                            expenseStorage.allExpenses();
                             break;
                         case "2":
                             System.out.println("Choose an alternative ");

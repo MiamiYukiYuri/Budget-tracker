@@ -1,20 +1,34 @@
 package com.stefansdotter.budgettracker.model;
 
 public class User {
-    private long id;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String password;
 
-    public User(long id, String name) {
-        this.id = id;
-        this.name = name;
+    public User(String firstName, String lastName, String password) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.password = password;
     }
 
-
-    public long getId() {
-        return id;
+    public String getfirstName() {
+        return firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getlastName() {
+        return lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

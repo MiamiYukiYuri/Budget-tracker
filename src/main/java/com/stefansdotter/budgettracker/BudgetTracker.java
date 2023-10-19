@@ -1,11 +1,19 @@
 package com.stefansdotter.budgettracker;
 
-import com.stefansdotter.budgettracker.model.enums.EIncomeCategory;
-
-import java.util.Scanner;
+import com.stefansdotter.budgettracker.model.User;
+import com.stefansdotter.budgettracker.service.IncomeStorage;
 
 public class BudgetTracker {
     public static void main(String[] args) {
+
+        IncomeStorage incomeStorage = new IncomeStorage();
+        incomeStorage.incomeMenu();
+
+        User user = new User("Mia", "Stefansdotter", "lattjo");
+        String firstUser = user.getfirstName();
+
+
+        /*
         Scanner scanner = new Scanner(System.in);
         System.out.println("Vänligen välj en inkomstkälla");
 
@@ -19,9 +27,13 @@ public class BudgetTracker {
             System.out.println(incomeIndex + " " + incomeCategory); // siffran + namnet på kategorin
             incomeIndex++;  // plussar på en siffra per iteration  (1, 2, 3..)
         }
+
         int choice = scanner.nextInt();
-        System.out.println("Du valde " + choice);
-    }
+
+
+        System.out.println("Du valde " + choice);              */
+
+
 
 
             /*
@@ -39,4 +51,5 @@ public class BudgetTracker {
          */
 
 
+    }
 }

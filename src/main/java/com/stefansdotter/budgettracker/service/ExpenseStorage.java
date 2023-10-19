@@ -1,5 +1,7 @@
 package com.stefansdotter.budgettracker.service;
 
+import com.stefansdotter.budgettracker.model.enums.EExpenseCategory;
+
 import java.util.ArrayList;
 
 public class ExpenseStorage {
@@ -7,7 +9,31 @@ public class ExpenseStorage {
     // Skapa ny ArrayList för alla expenses
     ArrayList<String> expenseList = new ArrayList<>();
 
-    // lista alla utgifter i array list
+    private EExpenseCategory expenseCategory;
+    private int expenseIndex = 1;
+
+
+
+
+    public void expenseMenu() {
+
+        for (EExpenseCategory expenseCategory : EExpenseCategory.values()) {
+            System.out.println(expenseIndex + " " + expenseCategory);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void allExpenses() {
         for (String expense : expenseList) {
             System.out.println(expense);

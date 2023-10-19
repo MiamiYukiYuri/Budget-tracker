@@ -19,5 +19,6 @@ public abstract class Transaction {
                 "amount=" + amount +
                 ", date=" + date +
                 '}';
+
     }
 }
