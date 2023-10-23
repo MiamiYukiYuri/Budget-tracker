@@ -8,8 +8,8 @@ public class Expense extends Transaction {
 
     // hämtar attributen från superklassen Transaction
     // date läggs till automatiskt och behöver inte fyllas i manuellt
-    public Expense(double amount) {
-        super(amount);
+    public Expense(double amount, String date) {
+        super(amount, date);
     }
 
     private EExpenseCategory expenseCategory;

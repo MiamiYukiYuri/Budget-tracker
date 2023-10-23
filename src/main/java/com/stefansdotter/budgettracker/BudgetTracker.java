@@ -1,46 +1,32 @@
 package com.stefansdotter.budgettracker;
 
-import com.stefansdotter.budgettracker.model.User;
 import com.stefansdotter.budgettracker.service.IncomeStorage;
+import com.stefansdotter.budgettracker.service.IncomeMenuService;
+
+import java.io.IOException;
 
 public class BudgetTracker {
-    public static void main(String[] args) {
 
-        IncomeStorage incomeStorage = new IncomeStorage();
-        incomeStorage.incomeMenu();
+    public static void main(String[] args) throws IOException {
 
-        User user = new User("Mia", "Stefansdotter", "lattjo");
-        String firstUser = user.getfirstName();
+        IncomeStorage iStorage = new IncomeStorage();
+        iStorage.readIncomeFile();
 
-
-        /*
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Vänligen välj en inkomstkälla");
-
-        // En int för att visa användaren en lista av våra kategorier i Enumet
-        int incomeIndex = 1;
-
-        // Loopa igenom alla incomeCategories och skriv ut dem som ett val
-        // för varje incomeCategory ("variabelnamn för loopen") så skall varje indexplats i Enumet skrivas ut
-
-        for (EIncomeCategory incomeCategory : EIncomeCategory.values()) {
-            System.out.println(incomeIndex + " " + incomeCategory); // siffran + namnet på kategorin
-            incomeIndex++;  // plussar på en siffra per iteration  (1, 2, 3..)
-        }
-
-        int choice = scanner.nextInt();
+        //     Test   incomeMenu
+        IncomeMenuService incomeMenuService = new IncomeMenuService();
+        incomeMenuService.incomeMenu();
 
 
-        System.out.println("Du valde " + choice);              */
+      // Income income = new Income("Barnbidrag", "231023", 500, EIncomeCategory.BENEFITS);
+      // Income income2 = new Income("Lön", "120923", 20000, EIncomeCategory.SALARY);
 
+       // visar alla inkomster
+       iStorage.showAllIncomes();
 
-
+       // spara till JSON när programmet avslutas
+      // iStorage.saveIncome(income);
 
             /*
-
-        Menu menu = new Menu();
-        menu.menu();
-
         UserService logInService = new UserService();
         User firstUser = logInService.createUser();
         System.out.println("Welcome " + firstUser.getFirstName() + " " + firstUser.getLastName() + ".");

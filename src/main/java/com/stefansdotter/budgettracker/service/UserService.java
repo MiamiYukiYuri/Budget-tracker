@@ -21,6 +21,9 @@ public class UserService {
         return new User(firstName, lastName, password);
     }
 
+
+    // OBS skapa user.json
+
     public User registerUser() {
         return null;
     }
@@ -30,3 +33,12 @@ public class UserService {
     }
 
 }
+
+/*
+        UserService logInService = new UserService();
+        User firstUser = logInService.createUser();
+        System.out.println("Welcome " + firstUser.getFirstName() + " " + firstUser.getLastName() + ".");
+
+        User secondUser = logInService.createUser();
+        System.out.println("Welcome " + secondUser.getFirstName() + " " + secondUser.getLastName() + ".");
+ */

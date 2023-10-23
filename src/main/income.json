@@ -1,0 +1,14 @@
+{
+  "Barnbidrag": {
+    "incomeCategory": "BENEFITS",
+    "name": "Barnbidrag",
+    "amount": 500.0,
+    "date": "231023"
+  },
+  "Lön": {
+    "incomeCategory": "SALARY",
+    "name": "Lön",
+    "amount": 20000.0,
+    "date": "120923"
+  }
+}
