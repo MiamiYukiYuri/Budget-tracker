@@ -4,13 +4,20 @@ import com.stefansdotter.budgettracker.model.enums.EExpenseCategory;
 
 public class Expense extends Transaction {
 
-    boolean isRunning = true;
+    private EExpenseCategory eCategory;
 
-    // hämtar attributen från superklassen Transaction
-    // date läggs till automatiskt och behöver inte fyllas i manuellt
-    public Expense(double amount, String date) {
-        super(amount, date);
+    public String getName() {
+        return name;
     }
 
-    private EExpenseCategory expenseCategory;
+    private String name;
+
+
+    // konstruktor för att skapa ny expense
+    // adderar enum och name till vår konstruktor
+    public Expense(String name, String date, double amount, EExpenseCategory eCategory) {
+        super(amount, date);
+        this.name = name;
+        this.eCategory = eCategory;
+    }
 }

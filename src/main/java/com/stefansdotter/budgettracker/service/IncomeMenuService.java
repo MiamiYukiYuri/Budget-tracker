@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class IncomeMenuService {
     Scanner scanner = new Scanner(System.in);
     IncomeStorage iStorage = new IncomeStorage();
-    ExpenseStorage eStorage = new ExpenseStorage();
 
     // INTRO MENU
     public void introMenu() {
@@ -25,7 +24,7 @@ public class IncomeMenuService {
     // MENU METHOD FOR ADDING, DELETING OR EDITING AN ITEM
     public void adeMenu() {
         String userInput = scanner.nextLine();
-        System.out.println("Do you want to add, edit or delete an item?");
+        System.out.println("Do you want to add, delete or edit an item?");
         System.out.println("[1] ADD");
         System.out.println("[2] DELETE");
         System.out.println("[3] EDIT");
@@ -39,6 +38,33 @@ public class IncomeMenuService {
                 break;
             case "3":
                 System.out.println("[3] EDIT");
+                break;
+            default:
+                System.out.println("Invalid input, please try again");
+                break;
+        }
+    }
+
+
+    public void adeIncomeMenu() {
+        String userInput = scanner.nextLine();
+        System.out.println("Do you want to add, delete or edit an income?");
+        System.out.println("[1] ADD");
+        System.out.println("[2] DELETE");
+        System.out.println("[3] EDIT");
+
+        switch (userInput) {
+            case "1":
+                System.out.println("[1] ADD");
+                menuAddIncome();
+                break;
+            case "2":
+                System.out.println("[2] DELETE");
+                menuDeleteIncome();
+                break;
+            case "3":
+                System.out.println("[3] EDIT");
+                menuEditIncome();
                 break;
             default:
                 System.out.println("Invalid input, please try again");
@@ -120,12 +146,10 @@ public class IncomeMenuService {
     }
 
 
-    // INCOME MENU
+    // INCOME MENU        - blir jättedumt, kika vidare på
     public void incomeMenu() {
-
         boolean isRunning = true;
         IncomeStorage iStorage = new IncomeStorage();
-        int incomeIndex = 1;
 
         while (isRunning) {
             String userInput = scanner.nextLine();
@@ -141,23 +165,10 @@ public class IncomeMenuService {
                             iStorage.showAllIncomes();
                             break;
                         case "2":
-                            adeMenu();
-                            switch (userInput) {
-                                case "1":
-                                    menuAddIncome();
-                                    break;
-                                case "2":
-                                    menuDeleteIncome();
-                                    break;
-                                case "3":
-                                    menuEditIncome();
-                                    break;
-                                default:
-                                    break;
-                            }
-                        case "3":
-                            isRunning = false;
-                            introMenu();
+                            adeIncomeMenu();
+                            break;
+                        default:
+                            System.out.println("Invalid input, please try again");
                             break;
                     }
                     break;

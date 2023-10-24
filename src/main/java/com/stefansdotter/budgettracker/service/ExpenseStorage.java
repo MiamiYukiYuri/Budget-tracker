@@ -1,66 +1,107 @@
 package com.stefansdotter.budgettracker.service;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.stefansdotter.budgettracker.model.Expense;
 import com.stefansdotter.budgettracker.model.enums.EExpenseCategory;
+import com.stefansdotter.budgettracker.model.enums.EIncomeCategory;
 
-import java.util.ArrayList;
+import java.io.*;
+import java.lang.reflect.Type;
+import java.util.Map;
+import java.util.Scanner;
 
 public class ExpenseStorage {
 
-    // Skapa ny ArrayList för alla expenses
-    ArrayList<String> expenseList = new ArrayList<>();
-
-    private EExpenseCategory expenseCategory;
-    private int expenseIndex = 1;
+    Scanner scanner = new Scanner(System.in);
+    private EExpenseCategory eCategory;
+    private int eIndex = 1;
 
 
+    public class EExpenseStorage {
+        private EIncomeCategory incomeCategory;
+        Scanner scanner = new Scanner(System.in);
+
+        // MAP OF EXPENSES
+        private Map<String, Expense> expenseList;
+        private String fileName = "src/main/expense.json";
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
-    public void expenseMenu() {
-
-        for (EExpenseCategory expenseCategory : EExpenseCategory.values()) {
-            System.out.println(expenseIndex + " " + expenseCategory);
+        // SAVE TO JSON
+        public void saveExpense(Expense expense) throws IOException {
+            expenseList.put(expense.getName(), expense);
+            FileWriter fw = new FileWriter(new File(fileName));
+            gson.toJson(expenseList, fw);
+            fw.close();
+            System.out.println("Your changes have been saved");
         }
-    }
 
 
+        // READ JSON
 
+        public void readExpenseFile() throws IOException {
+            Type type = new TypeToken<Map<Expense, Expense>>() {
+            }.getType();
+            Reader reader = new FileReader(new File(fileName));
+            expenseList = gson.fromJson(reader, type);
 
-
-
-
-
-
-
-
-
-
-    public void allExpenses() {
-        for (String expense : expenseList) {
-            System.out.println(expense);
+            System.out.println("Expenses retrieved");
         }
+
+
+        // FOR LOOP TO LIST ALL EXPENSE CATEGORIES
+        public void expenseArray() {
+            int expenseIndex = 1;
+            for (EExpenseCategory expenseCategory : EExpenseCategory.values()) {
+                System.out.println(expenseIndex + " " + expenseCategory);
+                eIndex++;
+            }
+        }
+
+        // FOR LOOP TO LIST ALL EXPENSES
+        public void showAllExpenses() {
+            for (Expense expense : expenseList.values()) {
+                System.out.println(expense);
+            }
+        }
+
+        // ADDS EXPENSE TO MAP/ARRAY LIST
+        public void addExpenseToArray(Expense expense) {
+            expenseList.put(expense.getName(), expense);
+            System.out.println("Expense saved!");
+        }
+
+
+        // ADD EXPENSE      // smäller, kopierat från Income
+        public void addExpense(EExpenseCategory category) {
+            System.out.print("Please enter the name of the expense you want to add");
+            String name = scanner.nextLine();
+            System.out.print("Please enter the amount: ");
+            double amount = scanner.nextDouble();
+            Expense expense = new Expense(name, "date", amount, category);
+            expenseList.put(name, expense);
+            addExpenseToArray(expense);
+        }
+
+
+        // REMOVE EXPENSE   - EJ LÖST!
+        public void removeExpense(EExpenseCategory category) {
+            String name = scanner.nextLine();
+            System.out.println("");
+            expenseList.remove(name);
+            // nåt bättre sätt att komma åt expenses, id?
+        }
+
+
+        // EDIT EXPENSE     - EJ LÖST
+        public void editExpense(EExpenseCategory category) {
+            System.out.println("");
+        }
+
+
     }
 
-    // lägg till utgift i array list
-    public void addExpense(String expense) {
-        expenseList.add(expense);
-    }
-
-
-    // ta bort utgift från array list
-    public void deleteExpense(String expense) {
-        expenseList.add(expense);
-    }
-
-
-    // ändra på en utgift
-    // public void editExpense(String expense) {
-    //     expenseList.set(expense);  }
 
 }
-
-
-// SAVE TO FILE
-
-
-// READ FILE
-
