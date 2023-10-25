@@ -33,17 +33,20 @@ public class IncomeStorage {
 
 
     // READ JSON
-    public void readIncomeFile() throws IOException {
+    public void readIncomeFile() {
         Type type = new TypeToken<Map<String, Income>>() {
         }.getType();
-        Reader reader = new FileReader(new File(fileName));
-        incomeList = gson.fromJson(reader, type);
-
-        System.out.println("Income list retrieved");
+        try {
+            Reader reader = new FileReader(new File(fileName));
+            incomeList = gson.fromJson(reader, type);
+            System.out.println("Income list retrieved");
+        } catch (IOException e) {
+            System.out.println(e.getMessage()); // skriver ut felet som kastats av file reader, om det kastats något fel
+        }
     }
 
 
-    // FOR LOOP TO LIST ALL INCOME CATEGORIES
+    // FOR LOOP LISTS ALL INCOME CATEGORIES
     public void incomeArray() {
         int incomeIndex = 1;
         for (EIncomeCategory incomeCategory : EIncomeCategory.values()) {
@@ -53,7 +56,7 @@ public class IncomeStorage {
     }
 
 
-    // FOR LOOP TO LIST ALL INCOMES
+    // FOR LOOP LISTS ALL INCOMES
     public void showAllIncomes() {
         for (Income income : incomeList.values()) {
             System.out.println(income);
@@ -61,7 +64,7 @@ public class IncomeStorage {
     }
 
 
-    // ADD INCOME   - det smäller, vad är det som är fel?
+    // ADD INCOME
     public void addIncome(EIncomeCategory category) {
         System.out.print("Please enter the name of the income you want to add: ");
         String name = scanner.nextLine();
@@ -69,25 +72,33 @@ public class IncomeStorage {
         double amount = scanner.nextDouble();
         Income income = new Income(name, "date", amount, category);
         incomeList.put(name, income);
-        addIncomeToArray(income);
+        addIncomeToMap(income);
     }
 
-    // ADDS INCOME TO MAP/ARRAY LIST
-    public void addIncomeToArray(Income income) {
+    // ADDS INCOME TO MAP
+    public void addIncomeToMap(Income income) {
         incomeList.put(income.getName(), income);
         System.out.println("Income saved!");
+        System.out.println("");
+    }
+
+    // REMOVES INCOME FROM MAP    (??)
+    public void removeIncomeFromMap(Income income) {
+        incomeList.remove(income.getName(), income);
+        System.out.println("Income removed!");
+        System.out.println("");
     }
 
 
-    // REMOVE INCOME   - EJ LÖST!
+    // REMOVE INCOME   - EJ LÖST!       bättre att ha enum categories som val här istället?
     public void removeIncome(EIncomeCategory category) {
-        String name = scanner.nextLine();
         System.out.println("What income do you want to remove?");
         showAllIncomes();
+        String name = scanner.nextLine();
         incomeList.remove(name);
-        System.out.println("The income " + name + " has now been removed");
+        showAllIncomes();
+       // removeIncomeFromMap(income);     funkar ej
     }
-
 
 
     // EDIT INCOME      -  EJ LÖST

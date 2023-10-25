@@ -5,23 +5,15 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.stefansdotter.budgettracker.model.Expense;
 import com.stefansdotter.budgettracker.model.enums.EExpenseCategory;
-import com.stefansdotter.budgettracker.model.enums.EIncomeCategory;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Scanner;
-
-public class ExpenseStorage {
-
-    Scanner scanner = new Scanner(System.in);
-    private EExpenseCategory eCategory;
-    private int eIndex = 1;
-
-
-    public class EExpenseStorage {
-        private EIncomeCategory incomeCategory;
+    public class ExpenseStorage {
         Scanner scanner = new Scanner(System.in);
+        private int eIndex = 1;
+
 
         // MAP OF EXPENSES
         private Map<String, Expense> expenseList;
@@ -41,13 +33,16 @@ public class ExpenseStorage {
 
         // READ JSON
 
-        public void readExpenseFile() throws IOException {
+        public void readExpenseFile() {
             Type type = new TypeToken<Map<Expense, Expense>>() {
             }.getType();
+            try {
             Reader reader = new FileReader(new File(fileName));
             expenseList = gson.fromJson(reader, type);
-
             System.out.println("Expenses retrieved");
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
 
@@ -75,8 +70,8 @@ public class ExpenseStorage {
 
 
         // ADD EXPENSE      // smäller, kopierat från Income
-        public void addExpense(EExpenseCategory category) {
-            System.out.print("Please enter the name of the expense you want to add");
+        public void addExpense (EExpenseCategory category) {
+            System.out.print("Please enter the name of the expense you want to add: ");
             String name = scanner.nextLine();
             System.out.print("Please enter the amount: ");
             double amount = scanner.nextDouble();
@@ -102,6 +97,3 @@ public class ExpenseStorage {
 
 
     }
-
-
-}

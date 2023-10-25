@@ -22,4 +22,13 @@ public class Income extends Transaction {
         this.incomeCategory = incomeCategories;
     }
 
+    @Override
+    public String toString() {
+        return "Income{" +
+                "incomeCategory=" + incomeCategory +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", date='" + date + '\'' +
+                "} " + super.toString();
+    }
 }
