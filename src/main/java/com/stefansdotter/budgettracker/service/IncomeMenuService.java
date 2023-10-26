@@ -6,7 +6,10 @@ import java.util.Scanner;
 
 public class IncomeMenuService {
     Scanner scanner = new Scanner(System.in);
-    IncomeStorage iStorage = new IncomeStorage();
+    private final IncomeStorage iStorage;
+    public IncomeMenuService(IncomeStorage iStorage) {
+        this.iStorage = iStorage;
+    }
 
     // MENU FOR ADDNIG, DELETING OR EDITING AN INCOME
     public void adeIncomeMenu() {
@@ -66,15 +69,15 @@ public class IncomeMenuService {
         switch (userInput) {
             case "1":
                 System.out.println("You've chosen the income category Salary");
-                iStorage.removeIncome(EIncomeCategory.SALARY);
+                iStorage.removeIncome();
                 break;
             case "2":
                 System.out.println("You've chosen the income category Benefits");
-                iStorage.removeIncome(EIncomeCategory.BENEFITS);
+                iStorage.removeIncome();
                 break;
             case "3":
                 System.out.println("You've chosen the income category Other");
-                iStorage.removeIncome(EIncomeCategory.OTHER);
+                iStorage.removeIncome();
                 break;
             default:
                 System.out.println("Invalid input, please try again");
@@ -91,15 +94,15 @@ public class IncomeMenuService {
         switch (userInput) {
             case "1":
                 System.out.println("You've chosen the income category Salary");
-                // metod för att ändra på en inkomst
+                iStorage.editIncome();
                 break;
             case "2":
                 System.out.println("You've chosen the income category Benefits");
-                // metod för att ändra på en inkomst
+                iStorage.editIncome();
                 break;
             case "3":
                 System.out.println("You've chosen the income category Other");
-                // metod för att ändra på en inkomst
+                iStorage.editIncome();
                 break;
             default:
                 System.out.println("Invalid input, please try again");
@@ -108,12 +111,16 @@ public class IncomeMenuService {
     }
 
 
+    public void showAllIncomes() {
+        iStorage.showAllIncomes();
+    }
+
     // INCOME MENU
     public void incomeMenu() {
         boolean isRunning = true;
-        iStorage.readIncomeFile();
 
         while (isRunning) {
+            System.out.println("");
             System.out.println("Choose an alternative ");
             System.out.println("[1] Show all of my incomes");
             System.out.println("[2] Add, delete or edit an income");
@@ -125,6 +132,9 @@ public class IncomeMenuService {
                     break;
                 case "2":
                     adeIncomeMenu();
+                    break;
+                case "3":
+                    isRunning = false;
                     break;
                 default:
                     System.out.println("Invalid input, please try again");

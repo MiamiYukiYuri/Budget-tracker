@@ -5,13 +5,12 @@ import com.stefansdotter.budgettracker.model.enums.EExpenseCategory;
 import java.util.Scanner;
 
 public class ExpenseMenuService {
+    public ExpenseMenuService(ExpenseStorage expenseStorage) {
+        this.expenseStorage = expenseStorage;
+    }
 
-    private EExpenseCategory eExpenseCategory;
-    ExpenseStorage expenseStorage = new ExpenseStorage();
-    MainMenu mainMenu = new MainMenu();
-    IncomeMenuService menuImport = new IncomeMenuService();
+    private ExpenseStorage expenseStorage;
     Scanner scanner = new Scanner(System.in);
-
 
     // MENU METHOD FOR ADDING, DELETING OR EDITING AN ITEM
     public void adeExpenseMenu() {
@@ -46,47 +45,38 @@ public class ExpenseMenuService {
         }
     }
 
-
-    // LISTS ALL EXPENSES    - kan inte hämta expenseList, private i ExpenseStorage men funkar med income??
-    /*
     public void showAllExpenses() {
-        for (Expense expense : expenseList.values()) {
-            System.out.println(expense);
-        }
+        expenseStorage.showAllExpenses();
     }
-
-     */
-
 
     // EXPENSE MENU
     public void expenseMenu() {
-        String userInput = scanner.nextLine();
         expenseStorage.readExpenseFile();
         boolean isRunning = true;
 
         while (isRunning) {
-                    System.out.println("Choose an alternative ");
-                    System.out.println("[1] Show all of my expenses");
-                    System.out.println("[2] Add, delete or edit an expense");
-                    System.out.println("[3] Return to main menu");
-                    userInput = scanner.nextLine();
-                    switch (userInput) {
-                        case "1":
-                            expenseStorage.showAllExpenses();
-                            break;
-                        case "2":
-                            adeExpenseMenu();    // OBS! ej klar
-                            break;
-                        case "3":
-                            isRunning = false; // OBS! ej klar
-                            break;
-                        default:
-                            System.out.println("Invalid input, please try again");
-                            break;
-                    }
+            System.out.println("");
+            System.out.println("Choose an alternative ");
+            System.out.println("[1] Show all of my expenses");
+            System.out.println("[2] Add, delete or edit an expense");
+            System.out.println("[3] Return to main menu");
+            String userInput = scanner.nextLine();
+            switch (userInput) {
+                case "1":
+                    expenseStorage.showAllExpenses();
+                    break;
+                case "2":
+                    adeExpenseMenu();
+                    break;
+                case "3":
+                    isRunning = false;
+                    break;
+                default:
+                    System.out.println("Invalid input, please try again");
+                    break;
             }
         }
-
+    }
 
 
     // MENU FOR ADDING AN EXPENSE
@@ -121,13 +111,66 @@ public class ExpenseMenuService {
         }
     }
 
-
-    //  METHOD FOR DELETING AN EXPENSE
     public void menuDeleteExpense() {
+        System.out.println("What category do you want to delete an expense from?");
+        expenseArray();
+        String userInput = scanner.nextLine();
+        switch (userInput) {
+            case "1":
+                System.out.println("You've chosen the category Rent");
+                expenseStorage.removeExpense();
+                break;
+            case "2":
+                System.out.println("You've chosen the category Food");
+                expenseStorage.removeExpense();
+                break;
+            case "3":
+                System.out.println("You've chosen the category Insurance");
+                expenseStorage.removeExpense();
+                break;
+            case "4":
+                System.out.println("You've chosen the category Pets");
+                expenseStorage.removeExpense();
+                break;
+            case "5":
+                System.out.println("You've chosen the category Other");
+                expenseStorage.removeExpense();
+                break;
+            default:
+                System.out.println("Invalid input, please try again");
+                break;
+        }
     }
 
-
-    // METHOD FOR EDITING AN EXPENSE
+    // MENU FOR EDITING AN EXPENSE
     public void menuEditExpense() {
+        System.out.println("In what category is the expense you want to edit?");
+        expenseArray();
+        String userInput = scanner.nextLine();
+        switch (userInput) {
+            case "1":
+                System.out.println("You've chosen the category Rent");
+                expenseStorage.editExpense();
+                break;
+            case "2":
+                System.out.println("You've chosen the category Food");
+                expenseStorage.editExpense();
+                break;
+            case "3":
+                System.out.println("You've chosen the category Insurance");
+                expenseStorage.editExpense();
+                break;
+            case "4":
+                System.out.println("You've chosen the category Pets");
+                expenseStorage.editExpense();
+                break;
+            case "5":
+                System.out.println("You've chosen the category Other");
+                expenseStorage.editExpense();
+                break;
+            default:
+                System.out.println("Invalid input, please try again");
+                break;
+        }
     }
 }

@@ -1,14 +1,20 @@
 {
-  "Barnbidrag": {
-    "incomeCategory": "BENEFITS",
-    "name": "Barnbidrag",
-    "amount": 500.0,
-    "date": "231023"
+  "Sold some stuff": {
+    "incomeCategory": "OTHER",
+    "name": "Sold some stuff",
+    "amount": 350.0,
+    "date": "date"
   },
-  "Lön": {
+  "Salary": {
     "incomeCategory": "SALARY",
-    "name": "Lön",
-    "amount": 20000.0,
-    "date": "120923"
+    "name": "Salary",
+    "amount": 20.0,
+    "date": "date"
+  },
+  "CSN": {
+    "incomeCategory": "BENEFITS",
+    "name": "CSN",
+    "amount": 5600.0,
+    "date": "date"
   }
 }

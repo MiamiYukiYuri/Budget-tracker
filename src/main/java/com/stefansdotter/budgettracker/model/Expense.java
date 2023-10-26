@@ -6,11 +6,15 @@ public class Expense extends Transaction {
 
     private EExpenseCategory eCategory;
 
+    private String name;
+
     public String getName() {
         return name;
     }
 
-    private String name;
+    public EExpenseCategory geteCategory() {
+        return eCategory;
+    }
 
 
     // konstruktor för att skapa ny expense
@@ -19,5 +23,15 @@ public class Expense extends Transaction {
         super(amount, date);
         this.name = name;
         this.eCategory = eCategory;
+    }
+
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "eCategory=" + eCategory +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", date='" + date + '\'' +
+                "} " + super.toString();
     }
 }

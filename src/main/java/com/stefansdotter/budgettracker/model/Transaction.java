@@ -1,6 +1,7 @@
 package com.stefansdotter.budgettracker.model;
 
 public abstract class Transaction {
+
     protected double amount;
     protected String date;
 
@@ -9,6 +10,13 @@ public abstract class Transaction {
         this.date = date;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getDate() {
+        return date;
+    }
 
     @Override
     public String toString() {

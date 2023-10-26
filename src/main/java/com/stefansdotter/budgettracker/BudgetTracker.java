@@ -2,6 +2,7 @@ package com.stefansdotter.budgettracker;
 
 import com.stefansdotter.budgettracker.service.ExpenseStorage;
 import com.stefansdotter.budgettracker.service.IncomeStorage;
+import com.stefansdotter.budgettracker.service.MainMenu;
 
 import java.io.IOException;
 
@@ -12,32 +13,13 @@ public class BudgetTracker {
         IncomeStorage iStorage = new IncomeStorage();
         ExpenseStorage eStorage = new ExpenseStorage();
 
+        iStorage.readIncomeFile();
+        eStorage.readExpenseFile();
 
-        /*
-        MainMenu mainMenu = new MainMenu();
+        MainMenu mainMenu = new MainMenu(iStorage, eStorage);
         mainMenu.mainMenu();
-        
-         */
 
-
-
-       // spara till JSON när programmet avslutas
-      // iStorage.saveIncome(income);
-
-
-
-
-
-            /*
-        UserService logInService = new UserService();
-        User firstUser = logInService.createUser();
-        System.out.println("Welcome " + firstUser.getFirstName() + " " + firstUser.getLastName() + ".");
-
-        User secondUser = logInService.createUser();
-        System.out.println("Welcome " + secondUser.getFirstName() + " " + secondUser.getLastName() + ".");
-
-         */
-
-
+        iStorage.saveIncomeFile();
+        eStorage.saveExpenseFile();
     }
 }

@@ -8,6 +8,7 @@ import com.stefansdotter.budgettracker.model.enums.EIncomeCategory;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -23,8 +24,7 @@ public class IncomeStorage {
 
 
     // SAVE TO JSON
-    public void saveIncome(Income income) throws IOException {
-        incomeList.put(income.getName(), income);
+    public void saveIncomeFile() throws IOException {
         FileWriter fw = new FileWriter(new File(fileName));
         gson.toJson(incomeList, fw);
         fw.close();
@@ -64,44 +64,67 @@ public class IncomeStorage {
     }
 
 
+    // for each loop för varje kategori, showAllOtherIncome
+
+
     // ADD INCOME
     public void addIncome(EIncomeCategory category) {
+        scanner = new Scanner(System.in);
         System.out.print("Please enter the name of the income you want to add: ");
         String name = scanner.nextLine();
         System.out.print("Please enter the amount: ");
         double amount = scanner.nextDouble();
-        Income income = new Income(name, "date", amount, category);
+        Income income = new Income(name, LocalDate.now().toString(), amount, category);
         incomeList.put(name, income);
-        addIncomeToMap(income);
-    }
-
-    // ADDS INCOME TO MAP
-    public void addIncomeToMap(Income income) {
-        incomeList.put(income.getName(), income);
-        System.out.println("Income saved!");
-        System.out.println("");
-    }
-
-    // REMOVES INCOME FROM MAP    (??)
-    public void removeIncomeFromMap(Income income) {
-        incomeList.remove(income.getName(), income);
-        System.out.println("Income removed!");
-        System.out.println("");
+        System.out.println("The income " + name + " has been successfully saved!");
     }
 
 
-    // REMOVE INCOME   - EJ LÖST!       bättre att ha enum categories som val här istället?
-    public void removeIncome(EIncomeCategory category) {
+    // REMOVE INCOME
+    public void removeIncome() {
+        scanner = new Scanner(System.in);
         System.out.println("What income do you want to remove?");
         showAllIncomes();
         String name = scanner.nextLine();
         incomeList.remove(name);
-        showAllIncomes();
-       // removeIncomeFromMap(income);     funkar ej
+        System.out.println("The income " + name + " has been successfully deleted!");
     }
 
 
-    // EDIT INCOME      -  EJ LÖST
-    public void editIncome(EIncomeCategory Income) {
+    public void editIncome() {
+        scanner = new Scanner(System.in);
+        System.out.println("What income do you want to edit?");
+
+        for (Income income : incomeList.values()) {
+            System.out.println(income.getName());
+        }
+
+        String name = scanner.nextLine();
+        Income oldIncome = incomeList.get(name);
+        System.out.println("What would you like to edit?");
+        System.out.println("[1] Name");
+        System.out.println("[2] Amount");
+        String userInput = scanner.nextLine();
+
+        switch (userInput) {
+            case "1":
+                System.out.println("Please enter the new name");
+                String newName = scanner.nextLine();
+                Income income = new Income(newName, oldIncome.getDate(), oldIncome.getAmount(), oldIncome.getIncomeCategory());
+                incomeList.remove(name);
+                incomeList.put(newName, income);
+                break;
+            case "2":
+                System.out.println("Please enter the new amount");
+                double newAmount = scanner.nextDouble();
+                Income replaceIncome = new Income(name, oldIncome.getDate(), newAmount, oldIncome.getIncomeCategory());      // byter ut amount till NewAmount = user input
+                incomeList.replace(name, replaceIncome);
+                break;
+            default:
+                System.out.println("Invalid input, please try again");
+                break;
+        }
+
+        System.out.println("The income " + name + " has been successfully edited!");
     }
 }

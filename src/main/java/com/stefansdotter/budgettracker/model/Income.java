@@ -4,15 +4,12 @@ import com.stefansdotter.budgettracker.model.enums.EIncomeCategory;
 
 public class Income extends Transaction {
 
-    private EIncomeCategory incomeCategory; // enumet
-
-    // getter för namn på inkomst att användas i metoden för save income to JSON
-    public String getName() {
-        return name;
+    public EIncomeCategory getIncomeCategory() {
+        return incomeCategory;
     }
 
-    private String name;
-
+    private final EIncomeCategory incomeCategory;
+    private final String name;
 
     // konstruktor för att skapa ny income
     // adderar enumet till vår konstruktor
@@ -20,6 +17,11 @@ public class Income extends Transaction {
         super(amount, date);
         this.name = name;
         this.incomeCategory = incomeCategories;
+    }
+
+    // getter för namn på inkomst att användas i metoden för save income to JSON
+    public String getName() {
+        return name;
     }
 
     @Override
