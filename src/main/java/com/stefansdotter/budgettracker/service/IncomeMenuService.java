@@ -7,11 +7,12 @@ import java.util.Scanner;
 public class IncomeMenuService {
     Scanner scanner = new Scanner(System.in);
     private final IncomeStorage iStorage;
+
     public IncomeMenuService(IncomeStorage iStorage) {
         this.iStorage = iStorage;
     }
 
-    // MENU FOR ADDNIG, DELETING OR EDITING AN INCOME
+    // METHOD MENU FOR ADDING, DELETING OR EDITING AN INCOME
     public void adeIncomeMenu() {
         System.out.println("Do you want to add, delete or edit an income?");
         System.out.println("[1] ADD");
@@ -34,10 +35,10 @@ public class IncomeMenuService {
         }
     }
 
-    // MENU METHOD FOR ADDING AN INCOME
+    // METHOD MENU FOR ADDING AN INCOME
     public void menuAddIncome() {
         System.out.println("What category do you want to add an income to?");
-        iStorage.incomeArray();
+        iStorage.incomeCategories();
         String userInput = scanner.nextLine();
 
         switch (userInput) {
@@ -60,24 +61,23 @@ public class IncomeMenuService {
     }
 
 
-
-    //  METHOD FOR DELETING AN INCOME
+    //  METHOD MENU FOR DELETING AN INCOME
     public void menuDeleteIncome() {
         System.out.println("What category do you want to delete an income from?");
-        iStorage.incomeArray();
+        iStorage.incomeCategories();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":
                 System.out.println("You've chosen the income category Salary");
-                iStorage.removeIncome();
+                iStorage.removeIncome(EIncomeCategory.SALARY);
                 break;
             case "2":
                 System.out.println("You've chosen the income category Benefits");
-                iStorage.removeIncome();
+                iStorage.removeIncome(EIncomeCategory.BENEFITS);
                 break;
             case "3":
                 System.out.println("You've chosen the income category Other");
-                iStorage.removeIncome();
+                iStorage.removeIncome(EIncomeCategory.OTHER);
                 break;
             default:
                 System.out.println("Invalid input, please try again");
@@ -85,24 +85,23 @@ public class IncomeMenuService {
         }
     }
 
-
-    // METHOD FOR EDITING AN INCOME
+    // METHOD MENU FOR EDITING AN INCOME
     public void menuEditIncome() {
         System.out.println("In what category is the income you want to edit?");
-        iStorage.incomeArray();
+        iStorage.incomeCategories();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":
                 System.out.println("You've chosen the income category Salary");
-                iStorage.editIncome();
+                iStorage.editIncome(EIncomeCategory.SALARY);
                 break;
             case "2":
                 System.out.println("You've chosen the income category Benefits");
-                iStorage.editIncome();
+                iStorage.editIncome(EIncomeCategory.BENEFITS);
                 break;
             case "3":
                 System.out.println("You've chosen the income category Other");
-                iStorage.editIncome();
+                iStorage.editIncome(EIncomeCategory.OTHER);
                 break;
             default:
                 System.out.println("Invalid input, please try again");
@@ -110,12 +109,7 @@ public class IncomeMenuService {
         }
     }
 
-
-    public void showAllIncomes() {
-        iStorage.showAllIncomes();
-    }
-
-    // INCOME MENU
+    // METHOD MENU INCOMES
     public void incomeMenu() {
         boolean isRunning = true;
 
@@ -128,6 +122,8 @@ public class IncomeMenuService {
             String userInput = scanner.nextLine();
             switch (userInput) {
                 case "1":
+                    System.out.println("These are all of your incomes");
+                    System.out.println("");
                     iStorage.showAllIncomes();
                     break;
                 case "2":

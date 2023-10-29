@@ -22,5 +22,11 @@
     "name": "Spotify ",
     "amount": 120.0,
     "date": "2023-10-26"
+  },
+  "Groceries": {
+    "eCategory": "FOOD",
+    "name": "Groceries",
+    "amount": 670.0,
+    "date": "2023-10-26"
   }
 }

@@ -12,7 +12,7 @@ public class Expense extends Transaction {
         return name;
     }
 
-    public EExpenseCategory geteCategory() {
+    public EExpenseCategory getExpenseCategory() {
         return eCategory;
     }
 

@@ -1,10 +1,4 @@
 {
-  "Sold some stuff": {
-    "incomeCategory": "OTHER",
-    "name": "Sold some stuff",
-    "amount": 350.0,
-    "date": "date"
-  },
   "Salary": {
     "incomeCategory": "SALARY",
     "name": "Salary",
@@ -14,7 +8,13 @@
   "CSN": {
     "incomeCategory": "BENEFITS",
     "name": "CSN",
-    "amount": 5600.0,
+    "amount": 4300.0,
     "date": "date"
+  },
+  "won at lottery": {
+    "incomeCategory": "OTHER",
+    "name": "won at lottery",
+    "amount": 500.0,
+    "date": "2023-10-29"
   }
 }

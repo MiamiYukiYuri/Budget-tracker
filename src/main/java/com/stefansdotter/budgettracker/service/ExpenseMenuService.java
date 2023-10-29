@@ -5,14 +5,15 @@ import com.stefansdotter.budgettracker.model.enums.EExpenseCategory;
 import java.util.Scanner;
 
 public class ExpenseMenuService {
-    public ExpenseMenuService(ExpenseStorage expenseStorage) {
-        this.expenseStorage = expenseStorage;
-    }
 
     private ExpenseStorage expenseStorage;
     Scanner scanner = new Scanner(System.in);
 
-    // MENU METHOD FOR ADDING, DELETING OR EDITING AN ITEM
+    public ExpenseMenuService(ExpenseStorage expenseStorage) {
+        this.expenseStorage = expenseStorage;
+    }
+
+    // METHOD MENU FOR ADDING, DELETING OR EDITING AN ITEM
     public void adeExpenseMenu() {
         System.out.println("Do you want to add, delete or edit an expense?");
         System.out.println("[1] ADD");
@@ -36,20 +37,11 @@ public class ExpenseMenuService {
         }
     }
 
-    // LOOPS ENUM CATEGORIES
-    public void expenseArray() {
-        int expenseIndex = 1;
-        for (EExpenseCategory expenseCategory : EExpenseCategory.values()) {
-            System.out.println(expenseIndex + " " + expenseCategory);
-            expenseIndex++;
-        }
-    }
-
     public void showAllExpenses() {
         expenseStorage.showAllExpenses();
     }
 
-    // EXPENSE MENU
+    // METHOD MENU FOR EXPENSES
     public void expenseMenu() {
         expenseStorage.readExpenseFile();
         boolean isRunning = true;
@@ -79,10 +71,10 @@ public class ExpenseMenuService {
     }
 
 
-    // MENU FOR ADDING AN EXPENSE
+    // METHOD MENU FOR ADDING AN EXPENSE
     public void menuAddExpense() {
         System.out.println("What category do you want to add an expense to?");
-        expenseArray();
+        expenseStorage.expenseCategoryArray();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":
@@ -111,30 +103,31 @@ public class ExpenseMenuService {
         }
     }
 
+    // METHOD MENU FOR DELETING AN EXPENSE
     public void menuDeleteExpense() {
         System.out.println("What category do you want to delete an expense from?");
-        expenseArray();
+        expenseStorage.expenseCategoryArray();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":
                 System.out.println("You've chosen the category Rent");
-                expenseStorage.removeExpense();
+                expenseStorage.removeExpense(EExpenseCategory.RENT);
                 break;
             case "2":
                 System.out.println("You've chosen the category Food");
-                expenseStorage.removeExpense();
+                expenseStorage.removeExpense(EExpenseCategory.FOOD);
                 break;
             case "3":
                 System.out.println("You've chosen the category Insurance");
-                expenseStorage.removeExpense();
+                expenseStorage.removeExpense(EExpenseCategory.INSURANCE);
                 break;
             case "4":
                 System.out.println("You've chosen the category Pets");
-                expenseStorage.removeExpense();
+                expenseStorage.removeExpense(EExpenseCategory.PETS);
                 break;
             case "5":
                 System.out.println("You've chosen the category Other");
-                expenseStorage.removeExpense();
+                expenseStorage.removeExpense(EExpenseCategory.OTHER);
                 break;
             default:
                 System.out.println("Invalid input, please try again");
@@ -142,31 +135,31 @@ public class ExpenseMenuService {
         }
     }
 
-    // MENU FOR EDITING AN EXPENSE
+    // METHOD MENU FOR EDITING AN EXPENSE
     public void menuEditExpense() {
         System.out.println("In what category is the expense you want to edit?");
-        expenseArray();
+        expenseStorage.expenseCategoryArray();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":
                 System.out.println("You've chosen the category Rent");
-                expenseStorage.editExpense();
+                expenseStorage.editExpense(EExpenseCategory.RENT);
                 break;
             case "2":
                 System.out.println("You've chosen the category Food");
-                expenseStorage.editExpense();
+                expenseStorage.editExpense(EExpenseCategory.FOOD);
                 break;
             case "3":
                 System.out.println("You've chosen the category Insurance");
-                expenseStorage.editExpense();
+                expenseStorage.editExpense(EExpenseCategory.INSURANCE);
                 break;
             case "4":
                 System.out.println("You've chosen the category Pets");
-                expenseStorage.editExpense();
+                expenseStorage.editExpense(EExpenseCategory.PETS);
                 break;
             case "5":
                 System.out.println("You've chosen the category Other");
-                expenseStorage.editExpense();
+                expenseStorage.editExpense(EExpenseCategory.OTHER);
                 break;
             default:
                 System.out.println("Invalid input, please try again");

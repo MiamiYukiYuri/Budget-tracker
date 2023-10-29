@@ -7,7 +7,6 @@ import com.stefansdotter.budgettracker.service.MainMenu;
 import java.io.IOException;
 
 public class BudgetTracker {
-
     public static void main(String[] args) throws IOException {
 
         IncomeStorage iStorage = new IncomeStorage();
