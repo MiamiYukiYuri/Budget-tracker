@@ -18,6 +18,7 @@ public class MainMenu {
         IncomeMenuService incomeMenuS = new IncomeMenuService(iStorage);
         ExpenseMenuService expenseMenuS = new ExpenseMenuService(eStorage);
         MyBudgetTracker myBudgetTracker = new MyBudgetTracker(eStorage, iStorage);
+
         boolean isRunning = true;
 
         // testat att använda trippelfnuttar för att leka lite med menyerna

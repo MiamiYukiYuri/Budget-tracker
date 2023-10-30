@@ -102,6 +102,7 @@ public class IncomeStorage {
                 System.out.println("Invalid input, please enter a number");
             }
         }
+        // lagt till toString på LocalDate.now, lägger till dagens datum automagiskt
         Income income = new Income(name, LocalDate.now().toString(), amount, category);
         incomeMap.put(name, income);
         System.out.println("The income " + name + " has been successfully saved!");
