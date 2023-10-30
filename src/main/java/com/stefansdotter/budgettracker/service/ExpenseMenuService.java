@@ -14,6 +14,8 @@ public class ExpenseMenuService {
     }
 
     // METHOD MENU FOR ADDING, DELETING OR EDITING AN ITEM
+    // switch där varje case representerar ett menyval
+    // metoderna för respektive val kallas på i respektive case
     public void adeExpenseMenu() {
         System.out.println("Do you want to add, delete or edit an expense?");
         System.out.println("[1] ADD");
@@ -37,11 +39,9 @@ public class ExpenseMenuService {
         }
     }
 
-    public void showAllExpenses() {
-        expenseStorage.showAllExpenses();
-    }
-
     // METHOD MENU FOR EXPENSES
+    // while loop med menyn för utgifter, där varje case i switchen representerar ett menyval
+    // möjlighet att återgå till main menu
     public void expenseMenu() {
         expenseStorage.readExpenseFile();
         boolean isRunning = true;
@@ -55,6 +55,8 @@ public class ExpenseMenuService {
             String userInput = scanner.nextLine();
             switch (userInput) {
                 case "1":
+                    System.out.println("These are all of your expenses");
+                    System.out.println("");
                     expenseStorage.showAllExpenses();
                     break;
                 case "2":
@@ -72,9 +74,11 @@ public class ExpenseMenuService {
 
 
     // METHOD MENU FOR ADDING AN EXPENSE
+    // listar utgiftskategorier, varje case i switchen representerar en kategori
+    // kallar på metoden för att lägga till en utgift i varje case
     public void menuAddExpense() {
         System.out.println("What category do you want to add an expense to?");
-        expenseStorage.expenseCategoryArray();
+        expenseStorage.expenseCategories();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":
@@ -104,9 +108,11 @@ public class ExpenseMenuService {
     }
 
     // METHOD MENU FOR DELETING AN EXPENSE
+    // listar utgiftskategorier, varje case i switchen representerar en kategori
+    // kallar på metoden för att ta bort en utgift i varje case
     public void menuDeleteExpense() {
         System.out.println("What category do you want to delete an expense from?");
-        expenseStorage.expenseCategoryArray();
+        expenseStorage.expenseCategories();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":
@@ -136,9 +142,11 @@ public class ExpenseMenuService {
     }
 
     // METHOD MENU FOR EDITING AN EXPENSE
+    // listar utgiftskategorier, varje case i switchen representerar en kategori
+    // kallar på metoden för att ändra på en utgift i varje case
     public void menuEditExpense() {
         System.out.println("In what category is the expense you want to edit?");
-        expenseStorage.expenseCategoryArray();
+        expenseStorage.expenseCategories();
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1":

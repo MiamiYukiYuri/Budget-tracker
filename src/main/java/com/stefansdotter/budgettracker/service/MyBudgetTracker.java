@@ -15,8 +15,8 @@ public class MyBudgetTracker {
     }
 
 
-    // för varje iteration i loopen adderas varje current income amount till en amount of incomes
-    private double incomeAmount() {
+    // för varje iteration i loopen adderas summan av varje enskild inkomst till en sammanlagd summa av inkomster
+    private double totalIncomeAmount() {
           double totalIncomeAmount = 0;
      for (Income income : iStorage.getAllIncomes()) {
          totalIncomeAmount += income.getAmount();
@@ -24,8 +24,8 @@ public class MyBudgetTracker {
       return totalIncomeAmount;
     }
 
-    // för varje iteration i loopen adderas varje current expense amount till en total amount of expenses
-    private double expenseAmount() {
+    // för varje iteration i loopen adderas summan av varje enskild utgift till en sammanlagd summa av utgifter
+    private double totalExpenseAmount() {
         double totalExpenseAmount = 0;
         for (Expense expense : eStorage.getAllExpenses()) {
             totalExpenseAmount += expense.getAmount();
@@ -34,16 +34,16 @@ public class MyBudgetTracker {
     }
 
 
-    // Method for showing the balance after income - expenses
-   public void budgetTracker() {
-       double totalIncomeAmount = incomeAmount();
-       double totalExpenseAmount = expenseAmount();
+    // metod som visar totala summan för utgifter och inkomster
+    // räknar ut vad som blir kvar efter att den totala summan för utgifter subtraherats från den totala summan av inkomster
+    // använder Math.round för att runda av beloppen
+   public void myBudgetTracker() {
+       double totalIncomeAmount = totalIncomeAmount();
+       double totalExpenseAmount = totalExpenseAmount();
 
-       System.out.println("Your total amount of expenses are: " + totalExpenseAmount);
-       System.out.println("Your total amount of incomes are: " + totalIncomeAmount);
+       System.out.println("The total amount of your expenses are " + Math.round(totalExpenseAmount) + " SEK.");
+       System.out.println("The total amount of your incomes are " + Math.round(totalIncomeAmount) + " SEK.");
        System.out.println("");
-       System.out.println("Your balance after all of your expenses has been paid is " + (totalIncomeAmount - totalExpenseAmount));
+       System.out.println("Your balance after all of your expenses has been paid is " + Math.round(totalIncomeAmount - totalExpenseAmount) + " SEK.");
    }
 }
-
-

@@ -3,7 +3,7 @@
     "incomeCategory": "SALARY",
     "name": "Salary",
     "amount": 20.0,
-    "date": "date"
+    "date": "2023-10-29"
   },
   "CSN": {
     "incomeCategory": "BENEFITS",
@@ -14,7 +14,13 @@
   "won at lottery": {
     "incomeCategory": "OTHER",
     "name": "won at lottery",
-    "amount": 500.0,
+    "amount": 300.2,
+    "date": "2023-10-29"
+  },
+  "Loppis": {
+    "incomeCategory": "OTHER",
+    "name": "Loppis",
+    "amount": 500.78,
     "date": "2023-10-29"
   }
 }

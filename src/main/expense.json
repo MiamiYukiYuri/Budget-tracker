@@ -28,5 +28,17 @@
     "name": "Groceries",
     "amount": 670.0,
     "date": "2023-10-26"
+  },
+  "Rent": {
+    "eCategory": "RENT",
+    "name": "Rent",
+    "amount": 5300.0,
+    "date": "2023-10-29"
+  },
+  "Netflix": {
+    "eCategory": "OTHER",
+    "name": "Netflix",
+    "amount": 129.0,
+    "date": "2023-10-29"
   }
 }

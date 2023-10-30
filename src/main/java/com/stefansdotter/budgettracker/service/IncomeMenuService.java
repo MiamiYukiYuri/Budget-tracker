@@ -13,6 +13,8 @@ public class IncomeMenuService {
     }
 
     // METHOD MENU FOR ADDING, DELETING OR EDITING AN INCOME
+    // switch där varje case representerar ett menyval
+    // metoderna för respektive val kallas på i respektive case
     public void adeIncomeMenu() {
         System.out.println("Do you want to add, delete or edit an income?");
         System.out.println("[1] ADD");
@@ -36,6 +38,8 @@ public class IncomeMenuService {
     }
 
     // METHOD MENU FOR ADDING AN INCOME
+    // listar inkomstkategorier, varje case i switchen representerar en kategori
+    // kallar på metoden för att lägga till en inkomst i varje case
     public void menuAddIncome() {
         System.out.println("What category do you want to add an income to?");
         iStorage.incomeCategories();
@@ -62,6 +66,8 @@ public class IncomeMenuService {
 
 
     //  METHOD MENU FOR DELETING AN INCOME
+    // listar inkomstkategorier, varje case i switchen representerar en kategori
+    // kallar på metoden för att ta bort en inkomst i varje case
     public void menuDeleteIncome() {
         System.out.println("What category do you want to delete an income from?");
         iStorage.incomeCategories();
@@ -86,6 +92,8 @@ public class IncomeMenuService {
     }
 
     // METHOD MENU FOR EDITING AN INCOME
+    // listar inkomstkategorier, varje case i switchen representerar en kategori
+    // kallar på metoden för att ändra på en inkomst i varje case
     public void menuEditIncome() {
         System.out.println("In what category is the income you want to edit?");
         iStorage.incomeCategories();
@@ -110,6 +118,8 @@ public class IncomeMenuService {
     }
 
     // METHOD MENU INCOMES
+    // while loop med menyn för inkomster, där varje case i switchen representerar ett menyval
+    // möjlighet att återgå till main menu
     public void incomeMenu() {
         boolean isRunning = true;
 

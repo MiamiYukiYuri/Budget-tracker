@@ -20,6 +20,8 @@ public class MainMenu {
         MyBudgetTracker myBudgetTracker = new MyBudgetTracker(eStorage, iStorage);
         boolean isRunning = true;
 
+        // testat att använda trippelfnuttar för att leka lite med menyerna
+
         String welcomeMessage = """
                  
                  ______________________________                        
@@ -48,6 +50,10 @@ public class MainMenu {
                  """;
         System.out.println(welcomeMessage);
 
+
+        // while loop med switch för varje alternativ i välkomstmenyn
+        // kallar på incomeMenu, expenseMenu och myBudgetTracker-metoderna under respektive case
+        // kallar på showAllIncomes/Expenses för case 3, Transactions
         while (isRunning) {
             System.out.println("");
 
@@ -68,7 +74,7 @@ public class MainMenu {
                     eStorage.showAllExpenses();
                     break;
                 case "4":
-                    myBudgetTracker.budgetTracker();
+                    myBudgetTracker.myBudgetTracker();
                     break;
                 case "5":
                     System.out.println(goodbyeMessage);
