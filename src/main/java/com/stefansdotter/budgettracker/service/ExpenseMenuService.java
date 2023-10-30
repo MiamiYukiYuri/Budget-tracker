@@ -40,7 +40,7 @@ public class ExpenseMenuService {
     }
 
     // METHOD MENU FOR EXPENSES
-    // while loop med menyn för utgifter, där varje case i switchen representerar ett menyval
+    // while loop med menyn för val nr 2: My expenses, där varje case i switchen representerar ett menyval
     // möjlighet att återgå till main menu via isRunning = false
     public void expenseMenu() {
         expenseStorage.readExpenseFile();

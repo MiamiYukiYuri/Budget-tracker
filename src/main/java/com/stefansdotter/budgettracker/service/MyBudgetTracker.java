@@ -8,7 +8,6 @@ public class MyBudgetTracker {
     private ExpenseStorage eStorage;
     private IncomeStorage iStorage;
 
-
     public MyBudgetTracker (ExpenseStorage eStorage, IncomeStorage iStorage) {
        this.eStorage = eStorage;
        this.iStorage = iStorage;
@@ -36,7 +35,7 @@ public class MyBudgetTracker {
 
     // metod som visar totala summan för utgifter och inkomster
     // räknar ut vad som blir kvar efter att den totala summan för utgifter subtraherats från den totala summan av inkomster
-    // använder Math.round för att runda av beloppen
+    // använder Math.round för att runda av beloppen pga snyggare så (:
    public void myBudgetTracker() {
        double totalIncomeAmount = totalIncomeAmount();
        double totalExpenseAmount = totalExpenseAmount();
