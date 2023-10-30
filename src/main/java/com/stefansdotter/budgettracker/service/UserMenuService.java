@@ -8,7 +8,9 @@ public class UserMenuService {
     Scanner scanner;
     String userMenu = """
                  ______________________________                        
-                |  [1] Log in                  |\\
+                |  Hi! What do you want to do? |\\
+                |                              | |
+                |  [1] Log in                  | |
                 |  [2] Register new user       | |    
                 |______________________________| |     
                  \\______________________________\\|
@@ -18,6 +20,9 @@ public class UserMenuService {
         this.userStorage = userStorage;
     }
 
+    // METHOD FOR LOGGING IN AND CREATING A NEW USER
+    // switch med ett case för respektive menyval
+    // OBS inte "kopplad" till programmet än, men tänker jobba vidare med det
      public void firstMenu() {
         boolean isRunning = true;
          scanner = new Scanner(System.in);

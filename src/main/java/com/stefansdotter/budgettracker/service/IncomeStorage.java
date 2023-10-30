@@ -19,7 +19,7 @@ public class IncomeStorage {
 
     // MAP OF INCOMES
     private Map<String, Income> incomeMap;
-    private String fileName = "src/main/income.json";
+    private final String fileName = "src/main/income.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
@@ -53,7 +53,7 @@ public class IncomeStorage {
     }
 
     // METHOD FOR LOOPING INCOMES BASED ON CATEGORY
-    // för att tydligt kunna se vilka inkomster som finns i vilken kategori
+    // för att se vilka inkomster som finns i vilken kategori
     public void showIncomeByCategory(EIncomeCategory category) {
         for (Income income : incomeMap.values()) {
             if (income.getIncomeCategory() == category) {
@@ -83,7 +83,7 @@ public class IncomeStorage {
 
     // METHOD FOR ADDING AN INCOME
     // för att lägga till namn och summa för en ny inkomst
-    // felhantering med while loop och en try/catch runt input från user för att fånga felaktig input för double
+    // felhantering med while loop och en try/catch runt input från user för att fånga felaktig input (text) för double
     public void addIncome(EIncomeCategory category) {
         double amount;
 

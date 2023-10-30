@@ -10,7 +10,6 @@ public class MainMenu {
         this.iStorage = iStorage;
         this.eStorage = eStorage;
     }
-
     Scanner scanner = new Scanner(System.in);
 
     public void mainMenu() {
@@ -52,7 +51,7 @@ public class MainMenu {
         System.out.println(welcomeMessage);
 
 
-        // while loop med switch för varje alternativ i välkomstmenyn
+        // while loop med switch, ett case för varje alternativ i välkomstmenyn
         // kallar på incomeMenu, expenseMenu och myBudgetTracker-metoderna under respektive case
         // kallar på showAllIncomes/Expenses för case 3, Transactions
         while (isRunning) {

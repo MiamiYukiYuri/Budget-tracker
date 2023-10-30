@@ -2,7 +2,7 @@
   "Salary": {
     "incomeCategory": "SALARY",
     "name": "Salary",
-    "amount": 20.0,
+    "amount": 20000.0,
     "date": "2023-10-29"
   },
   "CSN": {

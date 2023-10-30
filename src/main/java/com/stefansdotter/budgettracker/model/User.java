@@ -7,6 +7,8 @@ public class User {
     private String lastName;
     private String password;
 
+
+    // Konstruktor för att skapa en ny user
     public User(int id, String firstName, String lastName, String password) {
         this.id = id;
         this.lastName = lastName;

@@ -13,30 +13,36 @@ import java.util.Scanner;
 
 public class UserStorage {
 
+    // tanken är att jobba vidare med users och log in service så att en användare endast ska kunna logga in med sitt användarnamn och lösenord
+    // samt att varje användare bara kan se sin egen Budget Tracker
+    // lägga till funktion för att radera användare
+
+
     // MAP OF USERS
-    // basen för att skapa ny user file
     private Map<Integer, User> userMap = new HashMap<>();
     private String fileName = "src/main/users.json";
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
+    // METHOD FOR CREATING A NEW USER
+    // i nuläget är inte funktionen kopplad till programmet, utan bara "for show"
     public void createUser() {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Please enter your first name ");
+        System.out.print("Please enter your first name: ");
         String firstName = scanner.nextLine();
 
-        System.out.print("Please enter your last name ");
+        System.out.print("Please enter your last name: ");
         String lastName = scanner.nextLine();
 
         System.out.print("Please enter your password ");
         String password = scanner.nextLine();
 
+        // ökar anal nycklar i userMap med +1 för varje ny user
         int userId = userMap.size() + 1;
         User newUser = new User(userId, firstName, lastName, password);
         userMap.put(userId, newUser);
     }
-
 
 
     // METHOD FOR SAVING TO JSON
@@ -58,14 +64,4 @@ public class UserStorage {
             System.out.println(e.getMessage()); // skriver ut felet som kastats av file reader, om det kastats något fel
         }
     }
-
-
-    public User registerUser() {
-        return null;
-    }
-
-    public User logIn() {
-        return null;
-    }
-
 }
