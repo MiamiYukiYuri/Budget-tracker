@@ -118,7 +118,7 @@ public class IncomeMenuService {
     }
 
     // METHOD MENU INCOMES
-    // while loop med menyn för inkomster, där varje case i switchen representerar ett menyval
+    // while loop med menyn för val nr 1: My incomes, där varje case i switchen representerar ett menyval
     // möjlighet att återgå till main menu
     public void incomeMenu() {
         boolean isRunning = true;
